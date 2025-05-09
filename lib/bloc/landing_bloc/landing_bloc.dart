@@ -21,7 +21,8 @@ class LandingScreenCubit extends HydratedCubit<LandingScreenState> {
         favorites: {},
       ));
     } catch (e) {
-      emit(LandingScreenError("Failed to load posts"));
+      final errorMessage = e.toString().replaceAll('ApiException: ', '');
+      emit(LandingScreenError(errorMessage));
     }
   }
 
