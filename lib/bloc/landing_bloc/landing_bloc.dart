@@ -12,6 +12,7 @@ class LandingScreenCubit extends HydratedCubit<LandingScreenState> {
   LandingScreenCubit(this.repository) : super(LandingScreenLoading());
 
   Future<void> loadPosts() async {
+    emit(LandingScreenLoading());
     try {
       final fetchedPosts = await repository.getPosts();
       posts = fetchedPosts!;

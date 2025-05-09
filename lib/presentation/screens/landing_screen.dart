@@ -15,7 +15,7 @@ class LandingScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => LandingScreenCubit(
         LandingScreenRepository(LandingScreenDataProvider()),
-      )..loadPosts(), // Load posts when the cubit is created
+      )..loadPosts(),
       child: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -70,7 +70,7 @@ class LandingScreen extends StatelessWidget {
                 onRefresh: () async {
                   context
                       .read<LandingScreenCubit>()
-                      .loadPosts(); // Reload posts when refreshed
+                      .loadPosts();
                 },
                 child: ListView.builder(
                   itemCount: posts.length,
@@ -103,12 +103,11 @@ class LandingScreen extends StatelessWidget {
             return state is LandingScreenLoaded && state.posts.isNotEmpty
                 ? FloatingActionButton(
                     onPressed: () {
-                      // Implement your scroll-to-top functionality here
                     },
                     backgroundColor: Colors.yellow[200],
                     child: const Icon(Icons.arrow_upward),
                   )
-                : Container(); // Return an empty container when no posts are loaded
+                : Container();
           },
         ),
       ),
