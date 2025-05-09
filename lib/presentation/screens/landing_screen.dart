@@ -15,12 +15,14 @@ class LandingScreen extends StatefulWidget {
 
 class _LandingScreenState extends State<LandingScreen> {
   bool isLoading = true;
+  bool showGoToTopButton = false;
+  late ScrollController _scrollController;
   LandingScreenRepository postsRepo =
-      LandingScreenRepository(LandingScreenDataProvider());
+  LandingScreenRepository(LandingScreenDataProvider());
 
   List<PostModel>? postsData = [];
 
-  void fillData() async {
+  Future<void> fillData() async {
     try {
       final fetchedPosts = await postsRepo.getPosts();
       setState(() {
@@ -36,8 +38,36 @@ class _LandingScreenState extends State<LandingScreen> {
 
   @override
   void initState() {
-    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
     fillData();
+    super.initState();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.offset >= 300 && !showGoToTopButton) {
+      setState(() {
+        showGoToTopButton = true;
+      });
+    } else if (_scrollController.offset < 300 && showGoToTopButton) {
+      setState(() {
+        showGoToTopButton = false;
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeOut,
+    );
   }
 
   @override
@@ -48,14 +78,14 @@ class _LandingScreenState extends State<LandingScreen> {
         backgroundColor: Colors.blue[50],
         elevation: 4,
         title: Row(
-          mainAxisSize: MainAxisSize.min, // Important: To center correctly
+          mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               "assets/images/splash_book_icon.png",
-              height: 36, // Adjust to smaller size for AppBar
+              height: 36,
               width: 36,
             ),
-            const SizedBox(width: 8), // Space between image and text
+            const SizedBox(width: 8),
             Text(
               "Welcome to Articles!",
               style: GoogleFonts.aBeeZee(
@@ -70,33 +100,44 @@ class _LandingScreenState extends State<LandingScreen> {
       ),
       body: isLoading
           ? ListView.builder(
-              itemCount: 6,
-              itemBuilder: (context, index) => Shimmer.fromColors(
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Container(
-                    height: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
+        itemCount: 6,
+        itemBuilder: (context, index) => Shimmer.fromColors(
+          baseColor: Colors.grey[300]!,
+          highlightColor: Colors.grey[100]!,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Container(
+              height: 100,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
-            )
-          : ListView.builder(
-              itemCount: postsData?.length,
-              itemBuilder: (context, index) {
-                final post = postsData?[index];
-                return CustomCard(
-                  title: post?.title ?? '',
-                  subtitle: post?.body ?? '',
-                );
-              },
             ),
+          ),
+        ),
+      )
+          : RefreshIndicator(
+        onRefresh: fillData,
+        child: ListView.builder(
+          controller: _scrollController,
+          physics: const AlwaysScrollableScrollPhysics(),
+          itemCount: postsData?.length,
+          itemBuilder: (context, index) {
+            final post = postsData?[index];
+            return CustomCard(
+              title: post?.title ?? '',
+              subtitle: post?.body ?? '',
+            );
+          },
+        ),
+      ),
+      floatingActionButton: showGoToTopButton
+          ? FloatingActionButton(
+        onPressed: _scrollToTop,
+        backgroundColor: Colors.yellow[200],
+        child: const Icon(Icons.arrow_upward),
+      )
+          : null,
     );
   }
 }
