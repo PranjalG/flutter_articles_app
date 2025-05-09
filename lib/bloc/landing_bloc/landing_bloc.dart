@@ -14,25 +14,46 @@ class LandingScreenCubit extends HydratedCubit<LandingScreenState> {
   Future<void> loadPosts() async {
     emit(LandingScreenLoading());
     try {
-      final fetchedPosts = await repository.getPosts();
-      posts = fetchedPosts!;
-      emit(LandingScreenLoaded(posts, favorites));
+      final posts = await repository.getPosts() ?? [];
+      emit(LandingScreenLoaded(
+        posts: posts,
+        allPosts: posts,
+        favorites: {},
+      ));
     } catch (e) {
       emit(LandingScreenError("Failed to load posts"));
     }
   }
 
-  void toggleFavorite(int postId) {
-    if (favorites.contains(postId)) {
-      favorites.remove(postId);
-    } else {
-      favorites.add(postId);
+  void toggleFavorite(int index) {
+    if (state is LandingScreenLoaded) {
+      final currentState = state as LandingScreenLoaded;
+      final newFavorites = Set<int>.from(currentState.favorites);
+      if (newFavorites.contains(index)) {
+        newFavorites.remove(index);
+      } else {
+        newFavorites.add(index);
+      }
+      emit(currentState.copyWith(favorites: newFavorites));
     }
-    emit(LandingScreenLoaded(posts, favorites));
   }
 
-  bool isFavorite(int postId) {
-    return favorites.contains(postId);
+  void search(String query) {
+    if (state is LandingScreenLoaded) {
+      final current = state as LandingScreenLoaded;
+      final filtered = current.allPosts.where((post) {
+        final field = current.searchByTitle ? post.title : post.body;
+        return field?.toLowerCase().contains(query.toLowerCase()) ?? false;
+      }).toList();
+      emit(current.copyWith(posts: filtered));
+    }
+  }
+
+  void toggleSearchMode() {
+    if (state is LandingScreenLoaded) {
+      final current = state as LandingScreenLoaded;
+      emit(current.copyWith(searchByTitle: !current.searchByTitle));
+    }
   }
 
   @override
@@ -41,7 +62,11 @@ class LandingScreenCubit extends HydratedCubit<LandingScreenState> {
       final List<PostModel> posts =
           (json['posts'] as List).map((e) => PostModel.fromJson(e)).toList();
       final Set<int> favorites = Set<int>.from(json['favorites'] ?? []);
-      return LandingScreenLoaded(posts, favorites);
+      return LandingScreenLoaded(
+        posts: posts,
+        favorites: favorites,
+        allPosts: posts,
+      );
     } catch (_) {
       return LandingScreenLoading();
     }
@@ -52,6 +77,7 @@ class LandingScreenCubit extends HydratedCubit<LandingScreenState> {
     if (state is LandingScreenLoaded) {
       return {
         'posts': state.posts.map((e) => e.toJson()).toList(),
+        'allPosts': state.posts.map((e) => e.toJson()).toList(),
         'favorites': state.favorites.toList(),
       };
     } else {

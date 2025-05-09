@@ -66,29 +66,72 @@ class LandingScreen extends StatelessWidget {
             } else if (state is LandingScreenLoaded) {
               final posts = state.posts;
               final favorites = state.favorites;
-              return RefreshIndicator(
-                onRefresh: () async {
-                  context
-                      .read<LandingScreenCubit>()
-                      .loadPosts();
-                },
-                child: ListView.builder(
-                  itemCount: posts.length,
-                  itemBuilder: (context, index) {
-                    final post = posts[index];
-                    final isFavorite = favorites.contains(index);
-                    return CustomCard(
-                      title: post.title ?? '',
-                      subtitle: post.body ?? '',
-                      isFavorite: isFavorite,
-                      onFavoriteToggle: () {
-                        context
-                            .read<LandingScreenCubit>()
-                            .toggleFavorite(index);
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextField(
+                            onChanged: (query) => context
+                                .read<LandingScreenCubit>()
+                                .search(query),
+                            decoration: InputDecoration(
+                                hintText: state.searchByTitle
+                                    ? 'Search by Title'
+                                    : 'Search by Body',
+                                hintStyle: GoogleFonts.aBeeZee(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey[800],
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                prefixIcon: const Icon(
+                                  Icons.search,
+                                  size: 22,
+                                ),
+                                contentPadding: EdgeInsets.zero),
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        IconButton(
+                          icon: const Icon(Icons.swap_horiz),
+                          tooltip: 'Toggle Search Mode',
+                          onPressed: () => context
+                              .read<LandingScreenCubit>()
+                              .toggleSearchMode(),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: RefreshIndicator(
+                      onRefresh: () async {
+                        context.read<LandingScreenCubit>().loadPosts();
                       },
-                    );
-                  },
-                ),
+                      child: ListView.builder(
+                        itemCount: posts.length,
+                        itemBuilder: (context, index) {
+                          final post = posts[index];
+                          final isFavorite = favorites.contains(index);
+                          return CustomCard(
+                            title: post.title ?? '',
+                            subtitle: post.body ?? '',
+                            isFavorite: isFavorite,
+                            onFavoriteToggle: () {
+                              context
+                                  .read<LandingScreenCubit>()
+                                  .toggleFavorite(index);
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               );
             } else if (state is LandingScreenError) {
               return Center(child: Text(state.message));
@@ -102,8 +145,7 @@ class LandingScreen extends StatelessWidget {
           builder: (context, state) {
             return state is LandingScreenLoaded && state.posts.isNotEmpty
                 ? FloatingActionButton(
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                     backgroundColor: Colors.yellow[200],
                     child: const Icon(Icons.arrow_upward),
                   )

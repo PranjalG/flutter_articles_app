@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
@@ -29,23 +30,31 @@ class CustomCard extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           elevation: 4,
-          child: ListTile(
-            title: Text(
-              displayTitle,
-              style: GoogleFonts.aBeeZee(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-                color: Colors.grey[800],
+          child: InkWell(
+            onTap: () {
+              context.go('/landing_screen/detail_screen', extra: {
+                'title': title,
+                'subtitle': subtitle,
+              });
+            },
+            child: ListTile(
+              title: Text(
+                displayTitle,
+                style: GoogleFonts.aBeeZee(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[800],
+                ),
               ),
-            ),
-            subtitle: Text(
-              displaySubtitle,
-              style: GoogleFonts.aBeeZee(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                color: Colors.grey[900],
+              subtitle: Text(
+                displaySubtitle,
+                style: GoogleFonts.aBeeZee(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey[900],
+                ),
+                textAlign: TextAlign.justify,
               ),
-              textAlign: TextAlign.justify,
             ),
           ),
         ),
