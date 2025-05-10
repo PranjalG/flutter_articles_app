@@ -146,18 +146,6 @@ class LandingScreen extends StatelessWidget {
             }
           },
         ),
-        floatingActionButton:
-            BlocBuilder<LandingScreenCubit, LandingScreenState>(
-          builder: (context, state) {
-            return state is LandingScreenLoaded && state.posts.isNotEmpty
-                ? FloatingActionButton(
-                    onPressed: () {},
-                    backgroundColor: Colors.yellow[200],
-                    child: const Icon(Icons.arrow_upward),
-                  )
-                : Container();
-          },
-        ),
       ),
     );
   }
