@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final repository = LandingScreenRepository(LandingScreenDataProvider());
     return BlocProvider(
-      create: (_) => LandingScreenCubit(repository),
+      create: (_) => LandingScreenCubit(repository)..loadPosts(),
       child: MaterialApp.router(
         routerConfig: router,
         title: 'Flutter Articles App',
