@@ -35,13 +35,14 @@ All business logic is handled in the Cubit, with a unidirectional data flow that
 
 ## Screenshots
 
-On Launch App - Splash Screen 
-<img src="https://github.com/user-attachments/assets/ab0495c6-d309-4a50-b222-359e9e43b679" alt="launch_splash_screen_debug" width="300"/>
-![launch_splash_screen_debug](https://github.com/user-attachments/assets/ab0495c6-d309-4a50-b222-359e9e43b679)
+On Launch App - Splash Screen :
 
-Loading Screen - Shimmer effect
-![landing_screen_loading_shimmers](https://github.com/user-attachments/assets/3549f5d4-0863-4fc7-a7e1-3c9a8f05395f)
-![landing_screen_shimmers_debug_mode](https://github.com/user-attachments/assets/c192ae8e-1e20-4c03-ad9d-c0ea5a896947)
+<img src="https://github.com/user-attachments/assets/ab0495c6-d309-4a50-b222-359e9e43b679" alt="launch_splash_screen_debug" height="700"/>
+
+Loading Screen - Shimmer effect :
+
+<img src="https://github.com/user-attachments/assets/3549f5d4-0863-4fc7-a7e1-3c9a8f05395f" alt="landing_screen_loading_shimmers" height="700"/>
+<img src="https://github.com/user-attachments/assets/c192ae8e-1e20-4c03-ad9d-c0ea5a896947" alt="landing_screen_shimmers_debug_mode" height="700"/>
 
 When all data is loaded - 
 ![landing_screen_loaded](https://github.com/user-attachments/assets/e31fe822-ed8e-43ae-b916-58741e1d3172)
