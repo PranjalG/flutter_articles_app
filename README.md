@@ -35,26 +35,58 @@ All business logic is handled in the Cubit, with a unidirectional data flow that
 
 ## Screenshots
 
-<img src="https://github.com/user-attachments/assets/2aace48c-cba8-4a01-bb99-8534a1b3b19f" alt="Screenshot 1" width="300"/>
+On Launch App - Splash Screen :
 
-<img src="../../Downloads/Screenshot_20250510_114439.jpg" alt="Screenshot 2" width="300"/>
+<img src="https://github.com/user-attachments/assets/ab0495c6-d309-4a50-b222-359e9e43b679" alt="launch_splash_screen_debug" height="500"/>
 
-<img src="../../Downloads/Screenshot_20250510_121158.jpg" alt="Screenshot 3" width="300"/>
 
-<img src="../../Downloads/Screenshot_20250509_221236.jpg" alt="Screenshot 4" width="300"/>
 
-<img src="../../Downloads/Screenshot_20250510_121302.jpg" alt="Screenshot 5" width="300"/>
 
-<img src="../../Downloads/Screenshot_20250510_120058.jpg" alt="Screenshot 6" width="300"/>
+Loading Screen - Shimmer effect :
 
-<img src="../../Downloads/Screenshot_20250509_221222.jpg" alt="Screenshot 7" width="300"/>
+<img src="https://github.com/user-attachments/assets/3549f5d4-0863-4fc7-a7e1-3c9a8f05395f" alt="landing_screen_loading_shimmers" height="500"/>
+<img src="https://github.com/user-attachments/assets/c192ae8e-1e20-4c03-ad9d-c0ea5a896947" alt="landing_screen_shimmers_debug_mode" height="500"/>
 
-<img src="../../Downloads/Screenshot_20250510_121250.jpg" alt="Screenshot 8" width="300"/>
 
-<img src="../../Downloads/Screenshot_20250510_121306.jpg" alt="Screenshot 9" width="300"/>
 
-<img src="../../Downloads/Screenshot_20250510_121340.jpg" alt="Screenshot 10" width="300"/>
 
-<img src="../../Downloads/Screenshot_20250510_103125.jpg" alt="Screenshot 11" width="300"/>
+When all data is loaded - 
 
+<img src="https://github.com/user-attachments/assets/e31fe822-ed8e-43ae-b916-58741e1d3172" alt="landing_screen_loaded" height="500"/>
+
+
+
+
+Search functionality -
+
+<img src="https://github.com/user-attachments/assets/5fffd846-b9ba-4ba4-ae89-220785084e79" alt="landing_screen_search" height="500"/>
+
+
+
+
+User can select favourites -
+
+<img src="https://github.com/user-attachments/assets/67e5cdc0-986e-413f-bdbd-69d3d72214d1" alt="landing_screen_favourites_selected" height="500"/>
+
+
+
+
+User can view favourites in second tab -
+
+<img src="https://github.com/user-attachments/assets/5c011150-aa53-4919-9c3c-779e46b3bc1d" alt="favourites_screen" height="500"/>
+
+
+
+
+Clicking on any articles leads to detail screen -
+
+<img src="https://github.com/user-attachments/assets/09fb0748-5752-480e-9eea-210e3e17f017" alt="detail_screen" height="500"/>
+
+
+
+
+
+Error handling -
+
+<img src="https://github.com/user-attachments/assets/43d2d4cf-8a43-4688-bd95-56d3b9fedfd3" alt="error_handling" height="500"/>
 
