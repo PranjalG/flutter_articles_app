@@ -30,22 +30,20 @@ class _HomeScreenState extends State<HomeScreen> {
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: GoogleFonts.aBeeZee(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: Colors.blue[800],
-          letterSpacing: 1.2,
-        ),
-        unselectedLabelStyle: GoogleFonts.aBeeZee(
           fontSize: 12,
           fontWeight: FontWeight.w600,
           color: Colors.blue[800],
-          letterSpacing: 1.2,
+        ),
+        unselectedLabelStyle: GoogleFonts.aBeeZee(
+          fontSize: 10,
+          fontWeight: FontWeight.w600,
+          color: Colors.blue[800],
         ),
         selectedIconTheme: const IconThemeData(
-          size: 24,
+          size: 22,
         ),
         unselectedIconTheme: const IconThemeData(
-          size: 20,
+          size: 18,
         ),
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

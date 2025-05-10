@@ -37,23 +37,36 @@ class CustomCard extends StatelessWidget {
                 'subtitle': subtitle,
               });
             },
-            child: ListTile(
-              title: Text(
-                displayTitle,
-                style: GoogleFonts.aBeeZee(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey[800],
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                gradient: const LinearGradient(
+                  colors: [
+                    Colors.lightBlueAccent,
+                    Colors.greenAccent,
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
-              subtitle: Text(
-                displaySubtitle,
-                style: GoogleFonts.aBeeZee(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey[900],
+              child: ListTile(
+                title: Text(
+                  displayTitle,
+                  style: GoogleFonts.aBeeZee(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[800],
+                  ),
                 ),
-                textAlign: TextAlign.justify,
+                subtitle: Text(
+                  displaySubtitle,
+                  style: GoogleFonts.aBeeZee(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey[900],
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
               ),
             ),
           ),
