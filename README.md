@@ -34,4 +34,7 @@ I chose HydratedCubit to persist state locally, ensuring user preferences—like
 All business logic is handled in the Cubit, with a unidirectional data flow that keeps the UI reactive and easy to maintain.
 
 ## Screenshots
+![Screenshot_20250510_103125](https://github.com/user-attachments/assets/2aace48c-cba8-4a01-bb99-8534a1b3b19f)
+
+
 
