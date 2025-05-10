@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void _navigateToLanding() async {
     await Future.delayed(const Duration(seconds: 2));
     if (mounted) {
-      context.go('/landing_screen');
+      context.go('/home_screen');
     }
   }
 

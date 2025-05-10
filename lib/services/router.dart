@@ -1,3 +1,4 @@
+import 'package:flutter_article_app/presentation/screens/home_screen.dart';
 import 'package:flutter_article_app/presentation/screens/landing_screen.dart';
 import 'package:flutter_article_app/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -11,8 +12,8 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-      path: '/landing_screen',
-      builder: (context, state) => const LandingScreen(),
+      path: '/home_screen',
+      builder: (context, state) => const HomeScreen(),
       routes: [
         GoRoute(
           path: 'detail_screen',
@@ -23,11 +24,7 @@ final GoRouter router = GoRouter(
             return DetailScreen(title: title, subtitle: subtitle);
           },
         ),
-        GoRoute(
-          path: 'favourites_screen',
-          builder: (context, state) => const LandingScreen(),
-        ),
-      ],
+      ]
     ),
   ],
 );

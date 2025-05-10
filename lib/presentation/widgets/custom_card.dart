@@ -32,7 +32,7 @@ class CustomCard extends StatelessWidget {
           elevation: 4,
           child: InkWell(
             onTap: () {
-              context.go('/landing_screen/detail_screen', extra: {
+              context.go('/home_screen/detail_screen', extra: {
                 'title': title,
                 'subtitle': subtitle,
               });
