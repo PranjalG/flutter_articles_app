@@ -35,26 +35,4 @@ All business logic is handled in the Cubit, with a unidirectional data flow that
 
 ## Screenshots
 
-<img src="https://github.com/user-attachments/assets/2aace48c-cba8-4a01-bb99-8534a1b3b19f" alt="Screenshot 1" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_114439.jpg" alt="Screenshot 2" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_121158.jpg" alt="Screenshot 3" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250509_221236.jpg" alt="Screenshot 4" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_121302.jpg" alt="Screenshot 5" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_120058.jpg" alt="Screenshot 6" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250509_221222.jpg" alt="Screenshot 7" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_121250.jpg" alt="Screenshot 8" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_121306.jpg" alt="Screenshot 9" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_121340.jpg" alt="Screenshot 10" width="300"/>
-
-<img src="../../Downloads/Screenshot_20250510_103125.jpg" alt="Screenshot 11" width="300"/>
-
 
