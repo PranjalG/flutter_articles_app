@@ -36,6 +36,7 @@ All business logic is handled in the Cubit, with a unidirectional data flow that
 ## Screenshots
 
 On Launch App - Splash Screen 
+<img src="https://github.com/user-attachments/assets/ab0495c6-d309-4a50-b222-359e9e43b679" alt="launch_splash_screen_debug" width="300"/>
 ![launch_splash_screen_debug](https://github.com/user-attachments/assets/ab0495c6-d309-4a50-b222-359e9e43b679)
 
 Loading Screen - Shimmer effect
